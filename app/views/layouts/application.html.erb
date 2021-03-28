@@ -12,10 +12,50 @@
   
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
   </head>
+  <div class="main">
+
+  <header>
+
+  <div id= "title">
+    <%= link_to 'hangout', root_path %>
+  </div>
+  
+
+
+<%# <% if user_signed_in? %> 
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container-fluid">
+  <a class="navbar-brand" href="/shares/new"><button type="button" class="btn btn-outline-secondary">スペースの作成</button></a>
+  
+  <a class="navbar-brand" href="/shares/add"><button type="button" class="btn btn-outline-secondary">スペースの追加</button></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <%= link_to "HOME", root_path, class: "nav-link" %>
+        <%= link_to "マイページ", "#", class: "nav-link" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<%# <% end %> 
+</header>
+
 
 
   <body>
     <%= yield %>
+    </div>
+    <footer class="footer">
+      <p>Copyright © HANGOUT All rights reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
 </html>

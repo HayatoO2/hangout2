@@ -1,0 +1,46 @@
+
+
+
+
+  
+
+
+
+<div class="box2">
+  <span class="box-title"> 入室予定</span>
+  <button type="button" class="btn btn-success btn-lg m-auto d-block my-5 confirmation-btn">予定確認</button>
+  <button type="button" class="btn btn-primary btn-lg  m-auto d-block my-5 enter-btn">入室選択</button>
+
+
+  <%= form_with model: @present, url: share_chat_path(@chat.share_id, @chat.id), class: "form", method: :patch,class: "d-none enter",  local: true do |f| %>
+
+  <%= render 'layouts/error_messages', model: f.object %>
+
+  <%= f.label :・入室開始日時を選択 %>
+  <br>
+  <%= f.datetime_field :enter_time %>
+  <br><br><br><br>
+  <%= f.label :・退室予定日時を選択 %>
+  <br>
+  <%= f.datetime_field :leave_time %>
+
+  <br><br><br>
+  <%= f.submit '決定', class: "p-2" %>
+  <% end %>
+
+  
+
+  <span class="box-title"> 予定選択</span>
+  <%= form_with model: @chat, url: new_share_chat_path, class: 'form', method: :get,class: "d-none confirmation", local: true do |f| %>
+  <%= f.label :日付を選択, class: 'lavel' %>
+  <%= f.date_field :date, class: 'date-select my-2' %>
+  <%= f.submit '選択',class: "my-2 p-2" %>
+  <% end %>
+
+  
+  
+</div>
+
+
+</div>
+</div>

@@ -1,3 +1,28 @@
-<h1>Shares#index</h1>
-<p>Find me in app/views/shares/index.html.erb</p>
 
+
+<% unless user_signed_in? %>
+<div class="top-main">
+  <div>
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-dark btn-lg", type: "button" %>
+  </div>
+  <div>
+    <%= link_to "ログイン", new_user_session_path, class: "btn btn-dark btn-lg", type: "button" %>
+  </div>
+</div>
+  
+<% else %>
+
+
+<h2> スペース一覧 </h2>
+<div class="box2">
+  
+    <div class="center">
+<% @shares.each do |share| %>
+<div class="index-space">
+<%= link_to "#{share.name}", new_share_chat_path(share.id)  %>
+</div>
+<% end %>
+</div>
+<% end %>
+
+</div>

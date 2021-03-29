@@ -2,6 +2,13 @@ class SharesController < ApplicationController
   # before_action :authenticate_user!, only: [:add, :new, :show]
 
 
+  def index
+    @shares = current_user.shares
+  end
+
+
+
+
   def new
     @share = Share.new
   end
@@ -16,8 +23,6 @@ class SharesController < ApplicationController
   end
 
   def add
-    
-
   end
 
   def add_update

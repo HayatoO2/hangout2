@@ -8,4 +8,7 @@ class User < ApplicationRecord
 
   has_many :share_users
   has_many :shares, through: :share_users
+  has_many :chats
+  has_many :chats, through: :user_chats
+  has_many :presents
 end

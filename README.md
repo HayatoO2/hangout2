@@ -54,7 +54,7 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | -------------------------------|
-| date   | date       |  null: false                   |
+| date   | date       | null: false                   |
 | share  | references | null: false, foreign_key: true |
 
 

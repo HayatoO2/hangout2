@@ -118,12 +118,13 @@ input[type="submit"]{
 .box2 {
   position: relative;
   width: 40%;
+  margin: 40px auto;
   min-height: 50vh;
   max-height: 100vh;
-  margin: 2em 0;
   padding: 0.5em 1em;
   border: solid 3px #62c1ce;
   padding:30px;
+  overflow: scroll;
   .box-title {
     position: absolute;
     display: inline-block;

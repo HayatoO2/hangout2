@@ -24,7 +24,7 @@
   
 
 
-<%# <% if user_signed_in? %> 
+<% if user_signed_in? %>
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
   <a class="navbar-brand" href="/shares/new"><button type="button" class="btn btn-outline-secondary">スペースの作成</button></a>
@@ -36,7 +36,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <%= link_to "HOME", root_path, class: "nav-link" %>
-        <%= link_to "マイページ", "#", class: "nav-link" %>
+        <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
       </div>
     </div>
@@ -45,7 +45,7 @@
 
 
 
-<%# <% end %> 
+<% end %>
 </header>
 
 

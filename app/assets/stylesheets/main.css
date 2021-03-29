@@ -47,6 +47,10 @@ input[type="submit"]{
   color: red;
 }
 
+.show{
+  text-align: center;
+}
+
 
 /* ログイン状態 */
 

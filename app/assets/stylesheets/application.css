@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}

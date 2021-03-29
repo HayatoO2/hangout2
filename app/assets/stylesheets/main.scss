@@ -1,0 +1,236 @@
+.wrapper{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+.main{
+  min-height : calc(100vh - 40px);
+}
+
+.container{
+  width: 40%;
+  margin : auto 0;
+}
+
+body {
+  
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  background-color: rgb(203, 229, 240);
+  font-size: 30px !important;
+  color: #3f3f3f;
+  display: block;
+  padding: 10px !important;
+}
+
+.field{
+  margin: 20px;
+}
+
+
+.form-field{
+  text-align: center;
+}
+
+input[type="submit"]{
+  padding: 8px;
+}
+
+.error-message{
+  color: red;
+}
+
+.show{
+  text-align: center;
+}
+
+
+/* ログイン状態 */
+
+.navbar-nav{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* ボックス */
+.box {
+  background: #dcefff;
+  width: 40%;
+  min-height: 50vh;
+  max-height: 100vh;
+  margin: 2em auto;
+  overflow: scroll;
+}
+.box .box-title {
+  font-size: 1.2em;
+  background: #5fb3f5;
+  padding: 4px;
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+.box p {
+  padding: 15px 20px;
+  margin: 0;
+}
+
+#edit-btn{
+  display: block;
+  margin: 0 auto;
+  margin-top:30px;
+  width: 30%;
+  min-width: 20vw;
+}
+
+.two-container{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  margin: 20px;
+}
+
+/* ボックス */
+
+/* ボックス２ */
+
+.box2 {
+  position: relative;
+  width: 40%;
+  min-height: 50vh;
+  max-height: 100vh;
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  border: solid 3px #62c1ce;
+  padding:30px;
+  .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #62c1ce;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+  }
+  p {
+    margin: 0; 
+    padding: 0;
+  }
+  .m-auto{
+    margin: 0 auto;
+  }
+}
+
+
+/* ボックス２ */
+
+
+
+@media (max-width: 1000px) {
+
+
+  .wrapper {
+    display: block;
+  }
+  .box2{
+    width: 80%;
+    margin: 40px auto;
+    margin-bottom: 40px;
+  }
+}
+.card{
+  width: 40%;
+}
+
+
+.show-sub{
+  display:block;
+  text-align: left;
+  margin:30px;
+}
+
+.box{
+  display: flex;
+}
+
+.box3 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  width: 50%;
+  margin: 0 auto;
+  min-height: 50vh;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px #6091d3;
+  border-radius: 10px;
+}
+.box3 p {
+  margin: 0; 
+  text-align: center;
+  padding: 0;
+}
+
+
+
+
+
+.index-space {
+  width: 30%;
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 20px 5px;
+}
+.index-space a{
+  color: black;
+}
+.index-space a:hover{
+  color: black;
+  opacity: .8;
+}
+
+
+h2 .btn{
+  margin: 30px;
+}
+
+.chat-wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 70vh;
+}
+
+
+@media (max-width: 800px) {
+  .chat-wrapper {
+    display: block;
+  }
+  .contain{
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 80%;
+    border: 2px solid cadetblue;
+    padding: 10px;
+}
+}
+
+
+
+
+
+
+

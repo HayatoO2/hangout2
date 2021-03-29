@@ -43,7 +43,9 @@ input[type="submit"]{
   padding: 8px;
 }
 
-
+.error-message{
+  color: red;
+}
 
 
 /* ログイン状態 */

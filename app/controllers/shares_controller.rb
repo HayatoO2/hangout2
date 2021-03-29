@@ -16,6 +16,7 @@ class SharesController < ApplicationController
   end
 
   def add
+    binding.pry
 
   end
 
@@ -42,7 +43,7 @@ class SharesController < ApplicationController
   private
 
   def share_params
-    params.permit(:name, :log_name, :password, :password_confirmation)
+    params.require(:share).permit(:name, :log_name, :password, :password_confirmation)
   end
 
 end

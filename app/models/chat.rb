@@ -1,5 +1,5 @@
 class Chat < ApplicationRecord
-  validates :date, presence: true
+  
   
   
 

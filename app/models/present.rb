@@ -1,6 +1,5 @@
 class Present < ApplicationRecord
-  validates :enter_time, presence: true
-  validates :leave_time, presence: true
+  
 
 
   belongs_to :share

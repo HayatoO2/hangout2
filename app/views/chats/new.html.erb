@@ -12,7 +12,7 @@
   <button type="button" class="btn btn-primary btn-lg  m-auto d-block my-5 enter-btn">入室選択</button>
 
 
-  <%= form_with model: @present, url: share_chat_path(@chat.share_id, @chat.id), class: "form", method: :patch,class: "d-none enter",  local: true do |f| %>
+  <%= form_with model: @chat_form_present, url: share_chats_path(@chat.share_id), class: "form",class: "enter",  local: true do |f| %>
 
   <%= render 'layouts/error_messages', model: f.object %>
 

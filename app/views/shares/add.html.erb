@@ -1,0 +1,26 @@
+      <h2>スペースの追加</h2>
+<div class="box">
+  
+    <%= form_with url: add_update_shares_path, class: "center", method: :get, local: true do |f| %>
+
+
+      
+      <div class="field">
+        <%= f.label :スペースID %><br />
+        <%= f.text_field :log_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :パスワード %>
+        <br>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      
+
+      <div class="actions">
+        <%= f.submit "送信" %>
+      </div>
+    <% end %>
+    
+</div>

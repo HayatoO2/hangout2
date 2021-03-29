@@ -1,0 +1,35 @@
+
+    <h2>  スペースの作成  </h2>
+  
+  <div class="box">
+    
+    <%= form_with url: shares_path, class: "new_user", local: true do |f| %>
+
+
+      <div class="field">
+        <%= f.label :スペースの名前 %><br />
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :スペースID %><br />
+        <%= f.text_field :log_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :パスワード %>
+        <br>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :パスワード確認用 %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "送信" %>
+      </div>
+    <% end %>
+    
+</div>

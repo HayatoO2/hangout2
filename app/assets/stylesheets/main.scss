@@ -32,11 +32,23 @@ h2 {
 
 .field{
   margin: 20px;
+  text-align: center;
+}
+.center{
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
 }
 
+.actions{
+  text-align: center;
+  margin: 40px 0;
+}
 
 .form-field{
   text-align: center;
+  margin: 0 auto;
 }
 
 input[type="submit"]{
@@ -146,12 +158,16 @@ input[type="submit"]{
   .wrapper {
     display: block;
   }
-  .box2{
+  .box2, .box{
     width: 80%;
     margin: 40px auto;
     margin-bottom: 40px;
   }
 }
+
+// @media
+
+
 .card{
   width: 40%;
 }

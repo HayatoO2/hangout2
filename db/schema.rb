@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_28_195920) do
+ActiveRecord::Schema.define(version: 2021_03_29_041338) do
+
+  create_table "share_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "share_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["share_id"], name: "index_share_users_on_share_id"
+    t.index ["user_id"], name: "index_share_users_on_user_id"
+  end
+
+  create_table "shares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "log_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "encrypted_password"
+    t.string "encrypted_password_iv"
+    t.string "encrypted_password_confirmation"
+    t.string "encrypted_password_confirmation_iv"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
@@ -25,4 +45,6 @@ ActiveRecord::Schema.define(version: 2021_03_28_195920) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "share_users", "shares"
+  add_foreign_key "share_users", "users"
 end

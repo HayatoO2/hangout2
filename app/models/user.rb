@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
+
+  has_many :share_users
+  has_many :shares, through: :share_users
 end

@@ -3,9 +3,9 @@
   
   <div class="box">
     
-    <%= form_with model: @share, url: shares_path, class: "new_user", local: true do |f| %>
+    <%= form_with model: @share, url: shares_path, class: "form-field center", local: true do |f| %>
 
-    <%= render 'layouts/error_messages',class: "form-field center", model: f.object %>
+    <%= render 'layouts/error_messages', model: f.object %>
 
 
       <div class="field">

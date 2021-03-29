@@ -16,7 +16,7 @@ class SharesController < ApplicationController
   end
 
   def add
-    binding.pry
+    
 
   end
 

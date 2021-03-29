@@ -2,15 +2,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-
     redirect_to root_path if current_user.id != @user.id
   end
 
   def update
-    if current_user.update(user_params)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
       redirect_to root_path
     else
-      redirect_to edit_user_path(current_user.id)
+      render :edit
     end
   end
 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :password)
+    params.require(:user).permit(:nickname, :email, :password).merge(id: current_user.id)
   end
   
 end

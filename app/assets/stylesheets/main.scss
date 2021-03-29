@@ -112,25 +112,29 @@ input[type="submit"]{
   padding: 0.5em 1em;
   border: solid 3px #62c1ce;
   padding:30px;
+  .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #62c1ce;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+  }
+  p {
+    margin: 0; 
+    padding: 0;
+  }
+  .m-auto{
+    margin: 0 auto;
+  }
 }
-.box2 .box-title {
-  position: absolute;
-  display: inline-block;
-  top: -27px;
-  left: -3px;
-  padding: 0 9px;
-  height: 25px;
-  line-height: 25px;
-  font-size: 17px;
-  background: #62c1ce;
-  color: #ffffff;
-  font-weight: bold;
-  border-radius: 5px 5px 0 0;
-}
-.box2 p {
-  margin: 0; 
-  padding: 0;
-}
+
 
 /* ボックス２ */
 

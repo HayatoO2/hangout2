@@ -2,24 +2,20 @@ class ChatsController < ApplicationController
 
 
   def new
-    @chat = Chat.new(share_id: params[:share_id])
+    binding.pry
+    @chat = Chat.new(share_id: params[:share_id], date: params[:date])
     @chat_form_present = ChatFormPresent.new
     
     chat = Chat.find_by(share_id: params[:share_id], date: Date.today)
     
     if Chat.all.include?(chat)
       chat.save
-      # redirect_to edit_share_chat_path(@chat.share_id, @chat.id)
-    else
-
-      # redirect_to edit_share_chat_path(chat.share_id, chat.id)
     end
   end
 
   def create
     @chat_form_present = ChatFormPresent.new(chat_form_present_params)
     date_enter(@chat_form_present)
-    binding.pry
 
     if @chat_form_present.valid?
       @chat_form_present.save

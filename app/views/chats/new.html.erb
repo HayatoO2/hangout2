@@ -31,7 +31,7 @@
   
 
   <span class="box-title"> 予定選択</span>
-  <%= form_with model: @chat, url: new_share_chat_path, class: 'form', method: :get,class: "d-none confirmation", local: true do |f| %>
+  <%= form_with  url: new_share_chat_path, class: 'form', method: :get,class: " confirmation", local: true do |f| %>
   <%= f.label :日付を選択, class: 'lavel' %>
   <%= f.date_field :date, class: 'date-select my-2' %>
   <%= f.submit '選択',class: "my-2 p-2" %>

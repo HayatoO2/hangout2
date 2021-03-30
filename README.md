@@ -35,38 +35,6 @@
 - has_many :chats
 - has_many :chats, through: chat_presents
 
-## user_share テーブル
-
-| Column | Type       | Options                        | 
-| ------ | -----------| -------------------------------|
-| present| references | null: false, foreign_key: true |
-| chat   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :present
-- belongs_to :chat
-
-
-
-
-## chats テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | -------------------------------|
-| date   | date       | null: false                   |
-| share  | references | null: false, foreign_key: true |
-
-
-
-### Association
-
-- has_many :users
-- has_many :users, through: user_chats
-- belongs_to :share
-- has_many :presents
-- has_many :presents, through: chat_presents
-
 
 
 ## shares テーブル

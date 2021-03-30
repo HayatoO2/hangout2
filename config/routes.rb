@@ -8,6 +8,6 @@ Rails.application.routes.draw do
       get 'add'
       get 'add-update'
     end
-    resources :chats, only: [:new, :create]
+    resources :presents, only: [:new, :create]
   end
 end

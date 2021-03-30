@@ -19,7 +19,7 @@
     <div class="center">
 <% @shares.each do |share| %>
 <div class="index-space">
-<%= link_to "#{share.name}", new_share_chat_path(share.id)  %>
+<%= link_to "#{share.name}", new_share_present_path(share.id)  %>
 </div>
 <% end %>
 </div>

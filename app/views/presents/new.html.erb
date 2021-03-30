@@ -12,7 +12,7 @@
   <button type="button" class="btn btn-primary btn-lg  m-auto d-block my-5 enter-btn">入室選択</button>
 
 
-  <%= form_with model: @chat_form_present, url: share_chats_path(@chat.share_id), class: "form",class: "enter",  local: true do |f| %>
+  <%= form_with model: @present,url: share_presents_path(@present.share_id),  class: "form",class: "enter",  local: true do |f| %>
 
   <%= render 'layouts/error_messages', model: f.object %>
 
@@ -31,7 +31,7 @@
   
 
   <span class="box-title"> 予定選択</span>
-  <%= form_with  url: new_share_chat_path, class: 'form', method: :get,class: " confirmation", local: true do |f| %>
+  <%= form_with  url: new_share_present_path(@present.share_id), class: 'form', method: :get,class: " confirmation", local: true do |f| %>
   <%= f.label :日付を選択, class: 'lavel' %>
   <%= f.date_field :date, class: 'date-select my-2' %>
   <%= f.submit '選択',class: "my-2 p-2" %>

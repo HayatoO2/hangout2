@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'chats/new'
   root to: 'shares#index'
   devise_for :users
   resources :users, only: [:edit, :update, :show]
@@ -8,6 +7,6 @@ Rails.application.routes.draw do
       get 'add'
       get 'add-update'
     end
-    resources :presents, only: [:new, :create]
+    resources :presents, only: [:new, :create, :update]
   end
 end

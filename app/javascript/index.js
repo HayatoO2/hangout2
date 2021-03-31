@@ -33,9 +33,10 @@ $(function(){
   })
   $('input[name="sample2"]').on('change', function(){
     $('.sample2-change').toggleClass("d-none");
-  })
+  });
   $('.close').on('click', function(){
     $('.edit-box').addClass("d-none");
-  })
+  });
+
   
   });

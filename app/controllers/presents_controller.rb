@@ -1,9 +1,6 @@
 class PresentsController < ApplicationController
 
   def new
-
-
-
     
     if params[:present] == nil 
       @present = Present.new(enter_time: Date.today,  share_id: params[:share_id])
@@ -38,10 +35,19 @@ class PresentsController < ApplicationController
     end
   end
 
+  def destroy
+    present = Present.find(params[:id])
+    present.destroy
+
+    redirect_to new_share_present_path(params[:share_id], present: {enter_time: params[:page]})
+
+
+  end
+
   private
 
   def present_params
-    params.require(:present).permit(:enter_time, :leave_time).merge(user_id: current_user.id, share_id: params[:share_id])
+    params.require(:present).permit(:enter_time, :leave_time, :page).merge(user_id: current_user.id, share_id: params[:share_id])
   end
 
 end

@@ -7,6 +7,6 @@ Rails.application.routes.draw do
       get 'add'
       get 'add-update'
     end
-    resources :presents, only: [:new, :create, :update]
+    resources :presents, only: [:new, :create, :update, :destroy]
   end
 end

@@ -65,7 +65,7 @@
 
   <% if @presents.present? %>
     <% @presents.each do |present| %>
-    <div class="enter_member mb-5">
+    <div class="enter_member enter-member-<%= present.id %>  mb-5">
     <p>
     <% if (Time.now.to_i + (9*60*60) - present.enter_time.to_i) >= 0 %>
     <span class="badge bg-warning text-dark">入室中</span>
@@ -104,7 +104,7 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">NO</button>
-      <%= link_to "YES", share_present_path(present.share_id, present.id), class: "btn btn-primary", method: :delete %>
+      <%= link_to  "YES", share_present_path(present.share_id, present.id, page: @present.enter_time), class: "delete btn btn-primary", method: :delete, model: :present %>
     </div>
   </div>
 </div>
@@ -170,7 +170,7 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">NO</button>
-      <%= link_to "削除する", "#", class: "btn btn-primary", method: :delete %>
+      <%= link_to  "YES", share_present_path(present.share_id, present.id, page: @present.enter_time), class: "delete btn btn-primary", method: :delete, model: :present %>
     </div>
   </div>
 </div>

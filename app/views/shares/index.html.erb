@@ -1,13 +1,15 @@
 
 
 <% unless user_signed_in? %>
-<div class="top-main">
+<div class ="index-top">
+<div class="wrapper wrapper-top">
   <div>
-    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-dark btn-lg", type: "button" %>
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-dark btn-lg my-3", type: "button" %>
   </div>
   <div>
     <%= link_to "ログイン", new_user_session_path, class: "btn btn-dark btn-lg", type: "button" %>
   </div>
+</div>
 </div>
   
 <% else %>
@@ -26,7 +28,6 @@
     </div>
   <% end %>
   </div>
-<% end %>
 
 </div>
 <div class="box2">
@@ -45,11 +46,12 @@
 <% end %>
 &ensp;
 
-<%= present.share_id %></p>
+<%= present.share.name %></p>
 <p><%= "#{present.enter_time.strftime("%m月%d日 %H:%M:%S")}  ~  #{present.leave_time.strftime("%m月%d日 %H:%M:%S")}" %></p>
 </div>
 <% end %>
 
+<% end %>
 </div>
 
 

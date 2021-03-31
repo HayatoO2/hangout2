@@ -1,5 +1,5 @@
 class SharesController < ApplicationController
-  # before_action :authenticate_user!, only: [:add, :new, :show]
+  before_action :authenticate_user!, only: [:add, :new, :show, :add_update, :index]
 
 
   def index
@@ -42,14 +42,16 @@ class SharesController < ApplicationController
 
   def show
     @share = Share.find(params[:id])
-    binding.pry
     redirect_to root_path unless @share.users.include?(current_user)
+    
   end
 
   private
 
   def share_params
     params.require(:share).permit(:name, :log_name, :password, :password_confirmation)
+
+    
   end
 
 end

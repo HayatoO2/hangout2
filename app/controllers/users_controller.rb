@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!, only: [:edit, :update, :show]
+
   def edit
     @user = User.find(params[:id])
     redirect_to root_path if current_user.id != @user.id

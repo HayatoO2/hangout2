@@ -1,3 +1,60 @@
-<h1>Shares#index</h1>
-<p>Find me in app/views/shares/index.html.erb</p>
 
+
+<% unless user_signed_in? %>
+<div class ="index-top">
+<div class="wrapper wrapper-top">
+  <div>
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-dark btn-lg my-3", type: "button" %>
+  </div>
+  <div>
+    <%= link_to "ログイン", new_user_session_path, class: "btn btn-dark btn-lg", type: "button" %>
+  </div>
+</div>
+</div>
+  
+<% else %>
+
+
+<div class= "wrapper">
+  <div class="box2">
+    <div class= "box4 h5">
+    スペース一覧
+    </div>
+
+    <div class="center">
+    <% @shares.each do |share| %>
+    <div class="index-space">
+    <%= link_to "#{share.name}", new_share_present_path(share.id)  %>
+    </div>
+  <% end %>
+  </div>
+
+</div>
+<div class="box2">
+<div class ="box4">
+予約状況一覧
+</div>
+
+<% current_user.presents.each do |present| %>
+
+<div class= "my-5">
+<p>
+<% if  (Time.now.to_i + (9*60*60) - present.enter_time.to_i) >= 0 %>
+<span class="badge bg-warning">入室中</span>
+<% else %>
+<span class="badge bg-success">予約</span>
+<% end %>
+&ensp;
+
+<%= present.share.name %></p>
+<p><%= "#{present.enter_time.strftime("%m月%d日 %H:%M:%S")}  ~  #{present.leave_time.strftime("%m月%d日 %H:%M:%S")}" %></p>
+</div>
+<% end %>
+
+<% end %>
+</div>
+
+
+
+
+</div>

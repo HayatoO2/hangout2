@@ -1,6 +1,16 @@
 .wrapper{
   display: flex;
   justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+
+.wrapper-top{
+  margin: 35vh auto !important;
+  width: 30%;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 
@@ -118,12 +128,14 @@ input[type="submit"]{
 .box2 {
   position: relative;
   width: 40%;
-  min-height: 50vh;
+  height: 20% !important;
   max-height: 100vh;
-  margin: 2em 0;
+  margin: 40px auto;
+  text-align: center;
   padding: 0.5em 1em;
   border: solid 3px #62c1ce;
   padding:30px;
+  overflow: scroll;
   .box-title {
     position: absolute;
     display: inline-block;
@@ -161,15 +173,51 @@ input[type="submit"]{
   .box2, .box{
     width: 80%;
     margin: 40px auto;
-    margin-bottom: 40px;
+  }
+  .card{
+    margin :40px auto !important;
+  }
+  #edit-btn{
+    width: 70%;
+    margin-top: 70px;
+  }
+  .show-container {
+    display: block;
+  }
+  .card{
+    width: 80% !important;
+    margin: 0 auto;
+
+  }
+  .new_user{
+    float: left;
+    padding: 30px 0;
+  }
+  .new_user .field{
+    margin: 30px 0;
+  }
+  #h3{
+    display: block;
+    width: 70% !important;
+    
   }
 }
 
+
 // @media
+#h3{
+  font-size: 30px !important;
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+  width: 20%;
+}
 
 
 .card{
   width: 40%;
+  min-height: 50vh;
+  max-height: 100vh;
 }
 
 
@@ -243,10 +291,138 @@ h2 .btn{
     padding: 10px;
 }
 }
+@keyframes show{
+  0% {
+      opacity: 0;
+      transform: translateY(0)
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(30px);
+  }
+}
 
 
 
 
+.edit-box{
+  width: 100%;
+  box-shadow:0px 0px 12px 8px #ccc;
+}
+
+.act{
+  display: block;
+  animation: show .5s linear 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.btn-close{
+  display:block;
+  margin-left: auto;
+}
+
+.card-body{
+  
+  text-align: left;
+  width: 100%;
+  overflow: scroll;
+}
+
+.card-text{
+  display: block;
+  width: 40%;
+  margin: 0 auto;
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.card-word{
+  padding: 8px;
+}
+
+.card-tag{
+  color: black;
+}
+.card-tag:hover{
+  color: black;
+}
+
+
+.index-space {
+  width: 30%;
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 20px 5px;
+}
+.index-space a{
+  color: black;
+}
+.index-space a:hover{
+  color: black;
+  opacity: .8;
+}
+
+
+h2 .btn{
+  margin: 30px;
+}
+
+.chat-wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 70vh;
+}
+
+
+.swich{
+  margin : 0 auto;
+  width: 50%;
+  text-align: center;
+}
 
 
 
+.show-sub{
+  display:block;
+  text-align: left;
+  margin:30px;
+}
+
+.box3 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  width: 50%;
+  margin: 0 auto;
+  min-height: 50vh;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px #6091d3;
+  border-radius: 10px;
+}
+.box3 p {
+  margin: 0; 
+  text-align: center;
+  padding: 0;
+}
+
+.prev , .next{
+  font-size: 30px !important;
+  color: #3f3f3f;
+}
+
+
+
+
+.box4{
+  padding: 0.2em 0.5em;
+  margin: 2em 0;
+  background: #d6ebff;
+  box-shadow: 0px 0px 0px 10px #d6ebff;
+  border: dashed 2px white;
+}
+.box4 p {
+  margin: 0; 
+  padding: 0;
+}

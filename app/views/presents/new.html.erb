@@ -1,0 +1,255 @@
+
+<h2>
+<%= link_to  new_share_present_path(@present.share_id, present: {enter_time: @present.enter_time.to_date - 1}), class: "prev" do%>
+<i class="fas fa-angle-left prev"></i>
+<% end %>
+&ensp;
+<%= @present.enter_time.to_date.strftime("%m月%d日") %>
+<%if @present.enter_time.to_date == Date.today%>
+（今日）
+<% end %>
+&ensp;
+<%= link_to new_share_present_path(@present.share_id, present: {enter_time: @present.enter_time.to_date + 1}), class: "next" do %>
+<i class="fas fa-angle-right prev"></i>
+<% end %>
+</h2>
+<h3>
+<%= link_to  @present.share.name, share_path(@present.share.id), class: "btn btn btn-outline-secondary" , id: "h3"  %>
+</h3>
+
+
+
+  <div class="wrapper">
+
+  <div class="box2">
+  <button type="button" class="btn btn-success btn-lg d-block my-5 confirmation-btn m-auto">予定確認</button>
+  <button type="button" class="btn btn-primary btn-lg  m-auto d-block my-5 enter-btn">入室選択</button>
+
+
+  <%= form_with model: @present, url:  share_presents_path(@present.share_id),  class: "form enter d-none",  local: true do |f| %>
+
+  <%= render 'layouts/error_messages', model: f.object %>
+
+  <%= f.label :・入室開始日時を選択 %>
+  <br>
+  <%= f.datetime_field :enter_time %>
+  <br><br><br><br>
+  <%= f.label :・退室予定日時を選択 %>
+  <br>
+  <%= f.datetime_field :leave_time %>
+
+  <br><br><br>
+  <%= f.submit '決定', class: "p-2" %>
+  <% end %>
+
+  
+
+  <span class="box-title"> 予定選択</span>
+  <%= form_with model:@present, url: new_share_present_path(@present.share_id), class: 'form ', method: :get,class: " confirmation d-none", local: true do |f| %>
+  <%= f.label :日付を選択, class: 'lavel' %>
+  <%= f.date_field :enter_time, class: 'date-select my-2' %>
+  <%= f.submit '選択',class: "my-2 p-2" %>
+  <% end %>
+
+  
+  
+</div>
+
+<div class="card text-center ">
+<div class="card-header">
+  <ul class="nav nav-pills card-header-pills">
+    <li class="nav-item">
+      <a class="nav-link active card-tag in_out" href="#" >入室中</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link card-tag in_out" href="#">退出</a>
+    </li>
+  </ul>
+</div>
+
+
+<%# 入室 %>
+<div class="card-body ">
+  <p class="card-text">
+
+  <% if @presents.present? %>
+    <% @presents.each do |present| %>
+    <div class="enter_member enter-member-<%= present.id %>  mb-5">
+    <p>
+    <% if (Time.now.to_i + (9*60*60) - present.enter_time.to_i) >= 0 %>
+    <span class="badge bg-warning text-dark">入室中</span>
+    <%  end %>
+    
+    &nbsp;&nbsp;&nbsp;<%= present.user.nickname %>
+    
+    </p>
+    <p><%= "#{present.enter_time.strftime("%m月%d日 %H:%M:%S")}  ~  #{present.leave_time.strftime("%m月%d日 %H:%M:%S")}" %></p>
+
+    <% if user_signed_in? && current_user.id == present.user_id%>
+    
+    <% if (Time.now.to_i + (9*60*60) - present.enter_time.to_i) >= 0 %>
+
+    <%# 時間の編集 %>
+
+
+    
+    <button type="button" class="edit-time btn btn-outline-success btn-sm">時間の編集</button>
+
+    <%# 時間の編集 %>
+
+    <%# 退室 %>
+<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+退室する
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      退室しますか？
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">NO</button>
+      <%= link_to  "YES", share_present_path(present.share_id, present.id, page: @present.enter_time), class: "delete btn btn-primary", method: :delete, model: :present %>
+    </div>
+  </div>
+</div>
+</div>
+<div class="edit-box d-none">
+<button type="button" class="btn-close p-3 close" aria-label="閉じる"></button>
+
+
+<%= form_with model: present, url: share_present_path(present.share_id, present.id), class: "form", method: :patch, class: "text-center py-3", local: true do |f| %>
+
+
+
+
+<%= check_box_tag :sample%>
+<%= label_tag :sample, "入室開始時間を変更"%><br><br>
+<%= "#{present.enter_time.strftime("%m月%d日 %H:%M:%S")}" %>
+
+<br>
+<div class="sample-change d-none">
+<br>↓<br>
+<%= f.datetime_field :enter_time %>
+</div>
+<br><br>
+<%= check_box_tag :sample2 %>
+<%= label_tag :sample2, "退室予定時間を変更"%><br><br>
+<%= "#{present.leave_time.strftime("%m月%d日 %H:%M:%S")}" %>
+<div class="sample2-change d-none">
+<br>↓<br>
+<%= f.datetime_field :leave_time %>
+</div>
+
+<br><br><br>
+<%= f.submit '決定', class: "p-1 mb-3" %>
+<% end %>
+
+    </div>
+
+
+
+    <%# 退室 %>
+
+    <% else %>
+    <%# 予定編集 %>
+    <button type="button" class="btn btn-outline-success btn-sm edit-time">予定の編集</button>
+
+    
+    
+    <%# 予定編集 %>
+
+    <%# 削除 %>
+    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+削除する
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      削除しますか？
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">NO</button>
+      <%= link_to  "YES", share_present_path(present.share_id, present.id, page: @present.enter_time), class: "delete btn btn-primary", method: :delete, model: :present %>
+    </div>
+  </div>
+</div>
+</div>
+
+<%= form_with model: present, url: share_present_path(present.share_id, present.id), class: "form", method: :patch, class: "text-center py-3 d-none edit-box", local: true do |f| %>
+
+
+
+
+<%= check_box_tag :sample%>
+<%= label_tag :sample, "入室開始時間を変更"%><br><br>
+<%= "#{present.enter_time.strftime("%m月%d日 %H:%M:%S")}" %>
+
+<br>
+<div class="sample-change d-none">
+<br>↓<br>
+<%= f.datetime_field :enter_time %>
+</div>
+<br><br>
+<%= check_box_tag :sample2 %>
+<%= label_tag :sample2, "退室予定時間を変更"%><br><br>
+<%= "#{present.leave_time.strftime("%m月%d日 %H:%M:%S")}" %>
+<div class="sample2-change d-none">
+<br>↓<br>
+<%= f.datetime_field :leave_time %>
+</div>
+
+<br><br><br>
+<%= f.submit '決定', class: "p-1 mb-3" %>
+<% end %>
+
+    <%# 削除 %>
+    
+    <% end %>
+    <br>
+    <% end %>
+    </div>
+    
+    <% end %>
+  <% else %>
+  入室者なし
+  <% end %>
+  </p>
+  
+</div>
+<%# 入室 %>
+
+
+<%# 退室 %>
+<div class="card-body d-none">
+  <p class="card-text">
+
+  <% @out_user.each do |user| %>
+  <div class="my-4 mx-5">
+  <%= User.find(user).nickname %>
+  </div>
+  <% end %>
+  </p>
+  
+</div>
+<%# 退室 %>
+
+
+</div>
+
+
+
+
+
+
+</div>
+</div>

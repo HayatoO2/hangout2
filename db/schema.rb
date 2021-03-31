@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_041338) do
+ActiveRecord::Schema.define(version: 2021_03_29_084141) do
+
+  create_table "presents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "enter_time", null: false
+    t.datetime "leave_time", null: false
+    t.bigint "share_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["share_id"], name: "index_presents_on_share_id"
+    t.index ["user_id"], name: "index_presents_on_user_id"
+  end
 
   create_table "share_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -45,6 +56,8 @@ ActiveRecord::Schema.define(version: 2021_03_29_041338) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "presents", "shares"
+  add_foreign_key "presents", "users"
   add_foreign_key "share_users", "shares"
   add_foreign_key "share_users", "users"
 end

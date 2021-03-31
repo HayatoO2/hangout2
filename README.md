@@ -18,6 +18,7 @@
 - has_many :presents
 - has_many :chats
 - has_many :chats, through: :user_chats
+- has_many :owner
 
 ## present テーブル
 
@@ -52,6 +53,7 @@
 - has_many :users, through: user_share
 - has_many :chats
 - has_many :presents
+- has_many :owner
 
 ## user_share テーブル
 
@@ -59,6 +61,24 @@
 | ------ | -----------| -------------------------------|
 | user   | references | null: false, foreign_key: true |
 | share  | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :share
+
+
+## owners テーブル
+
+| Column      | Type       | Options                        | 
+| ----------- | -----------| -------------------------------|
+| user        | references | null: false, foreign_key: true |
+| share       | references | null: false, foreign_key: true |
+| comment     | text       | null: false, foreign_key: true |
+| start       | datetime   | null: false, foreign_key: true |
+| finish      | datetime   | null: false, foreign_key: true |
+| owner_flag  | boolean    | null: false, foreign_key: true |
+
 
 ### Association
 

@@ -42,6 +42,7 @@ class SharesController < ApplicationController
 
   def show
     @share = Share.find(params[:id])
+    binding.pry
     redirect_to root_path unless @share.users.include?(current_user)
   end
 

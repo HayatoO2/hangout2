@@ -1,0 +1,21 @@
+<h2>
+<%= @share.name %>
+</h2>
+
+<div class = "box2 h5">
+
+<div class="box4">
+    <p>所属メンバー</p>
+</div>
+
+
+<% @share.users.each do |user| %>
+
+
+<p class="my-3">
+<%= user.nickname %>
+</p>
+
+<% end %>
+
+</div>

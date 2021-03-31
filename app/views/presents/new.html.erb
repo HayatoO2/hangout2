@@ -85,7 +85,7 @@
 
     
     <button type="button" class="edit-time btn btn-outline-success btn-sm">時間の編集</button>
-    
+
     <%# 時間の編集 %>
 
     <%# 退室 %>
@@ -111,6 +111,8 @@
 </div>
 <div class="edit-box d-none">
 <button type="button" class="btn-close p-3 close" aria-label="閉じる"></button>
+
+
 <%= form_with model: present, url: share_present_path(present.share_id, present.id), class: "form", method: :patch, class: "text-center py-3", local: true do |f| %>
 
 

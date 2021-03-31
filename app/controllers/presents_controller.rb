@@ -30,7 +30,12 @@ class PresentsController < ApplicationController
   end
 
   def update
-    binding.pry
+    @present = Present.find(params[:id])
+    if @present.update(present_params)
+      redirect_to  new_share_present_path(@present.share_id, present: {enter_time: @present.enter_time})
+    else
+      render :new
+    end
   end
 
   private

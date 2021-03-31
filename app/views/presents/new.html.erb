@@ -148,7 +148,9 @@
 
     <% else %>
     <%# 予定編集 %>
-    <button type="button" class="btn btn-outline-success btn-sm">予定の編集</button>
+    <button type="button" class="btn btn-outline-success btn-sm edit-time">予定の編集</button>
+
+    
     
     <%# 予定編集 %>
 
@@ -173,6 +175,34 @@
   </div>
 </div>
 </div>
+
+<%= form_with model: present, url: share_present_path(present.share_id, present.id), class: "form", method: :patch, class: "text-center py-3 d-none edit-box", local: true do |f| %>
+
+
+
+
+<%= check_box_tag :sample%>
+<%= label_tag :sample, "入室開始時間を変更"%><br><br>
+<%= "#{present.enter_time.strftime("%m月%d日 %H:%M:%S")}" %>
+
+<br>
+<div class="sample-change d-none">
+<br>↓<br>
+<%= f.datetime_field :enter_time %>
+</div>
+<br><br>
+<%= check_box_tag :sample2 %>
+<%= label_tag :sample2, "退室予定時間を変更"%><br><br>
+<%= "#{present.leave_time.strftime("%m月%d日 %H:%M:%S")}" %>
+<div class="sample2-change d-none">
+<br>↓<br>
+<%= f.datetime_field :leave_time %>
+</div>
+
+<br><br><br>
+<%= f.submit '決定', class: "p-1 mb-3" %>
+<% end %>
+
     <%# 削除 %>
     
     <% end %>

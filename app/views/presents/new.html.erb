@@ -1,8 +1,16 @@
 
 <h2>
+<%= link_to  new_share_present_path(@present.share_id, present: {enter_time: @present.enter_time.to_date - 1}), class: "prev" do%>
+<i class="fas fa-angle-left prev"></i>
+<% end %>
+&ensp;
 <%= @present.enter_time.to_date.strftime("%m月%d日") %>
 <%if @present.enter_time.to_date == Date.today%>
 （今日）
+<% end %>
+&ensp;
+<%= link_to new_share_present_path(@present.share_id, present: {enter_time: @present.enter_time.to_date + 1}), class: "next" do %>
+<i class="fas fa-angle-right prev"></i>
 <% end %>
 </h2>
 <h3 class="btn btn-outline-secondary" id="h3">

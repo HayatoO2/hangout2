@@ -120,6 +120,13 @@
     </p>
     <p><%= "#{present.enter_time.strftime("%m月%d日 %H:%M:%S")}  ~  #{present.leave_time.strftime("%m月%d日 %H:%M:%S")}" %></p>
 
+    <%if present.owner_flag = true %>
+    <div class="my-3 pb-2 comment">
+コメント：<%= present.comment%>
+    </div>
+    <% end %>
+
+
     <% if user_signed_in? && current_user.id == present.user_id%>
     
     <% if (Time.now.to_i + (9*60*60) - present.enter_time.to_i) >= 0 %>
@@ -128,7 +135,7 @@
 
 
     
-    <button type="button" class="edit-time btn btn-outline-success btn-sm">時間の編集</button>
+    <button type="button" class="edit-time btn btn-outline-success btn-sm">編集</button>
 
     <%# 時間の編集 %>
 

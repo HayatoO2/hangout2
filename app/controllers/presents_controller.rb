@@ -3,6 +3,8 @@ class PresentsController < ApplicationController
 
   def new
     
+    
+
     if params[:present] == nil 
       @present = Present.new(enter_time: Date.today,  share_id: params[:share_id])
       @presents = Present.where('enter_time <= ? and leave_time > ?',Date.today,Date.today)
@@ -21,7 +23,6 @@ class PresentsController < ApplicationController
     @present = Present.new(present_params)
     @present.owner_flag = params[:owner_flag] if params[:owner_flag].present?
     if @present.save
-      binding.pry
       redirect_to  new_share_present_path(@present.share_id, present: {enter_time: @present.enter_time})
 
     else

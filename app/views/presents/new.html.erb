@@ -1,6 +1,5 @@
 
 <h2>
-<% binding.pry%>
 <%= link_to  new_share_present_path(@present.share_id, present: {enter_time: @present.enter_time.to_date - 1}), class: "prev" do%>
 <i class="fas fa-angle-left prev"></i>
 <% end %>
@@ -17,6 +16,7 @@
 <h3>
 <%= link_to  @present.share.name, share_path(@present.share.id), class: "btn btn btn-outline-secondary" , id: "h3"  %>
 </h3>
+
 
 
 
@@ -106,8 +106,11 @@
 
   <% if @presents.present? %>
     <% @presents.each do |present| %>
-    <div class="enter_member enter-member-<%= present.id %>  mb-5">
+    <div class="enter-member enter-member-<%= present.id %>  mb-5 p-3 enter-<%= present.owner_flag %> ">
     <p>
+    <% if present.owner_flag %>
+    <span class="badge bg-danger">一人で使用</span>
+    <%end %>
     <% if (Time.now.to_i + (9*60*60) - present.enter_time.to_i) >= 0 %>
     <span class="badge bg-warning text-dark">入室中</span>
     <%  end %>

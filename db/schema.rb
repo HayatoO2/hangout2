@@ -12,6 +12,19 @@
 
 ActiveRecord::Schema.define(version: 2021_03_29_084141) do
 
+  create_table "owners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "share_id", null: false
+    t.text "comment", null: false
+    t.datetime "start", null: false
+    t.datetime "finish", null: false
+    t.boolean "owner_flag", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["share_id"], name: "index_owners_on_share_id"
+    t.index ["user_id"], name: "index_owners_on_user_id"
+  end
+
   create_table "presents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "enter_time", null: false
@@ -56,6 +69,8 @@ ActiveRecord::Schema.define(version: 2021_03_29_084141) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "owners", "shares"
+  add_foreign_key "owners", "users"
   add_foreign_key "presents", "shares"
   add_foreign_key "presents", "users"
   add_foreign_key "share_users", "shares"

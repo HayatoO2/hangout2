@@ -13,16 +13,15 @@ class PresentsController < ApplicationController
     end
       @out_user = Present.in_out(@presents,@present)
 
-      binding.pry
 
   end
 
 
   def create
     @present = Present.new(present_params)
-    
+    @present.owner_flag = params[:owner_flag] if params[:owner_flag].present?
     if @present.save
-
+      binding.pry
       redirect_to  new_share_present_path(@present.share_id, present: {enter_time: @present.enter_time})
 
     else
@@ -53,7 +52,7 @@ class PresentsController < ApplicationController
   private
 
   def present_params
-    params.require(:present).permit(:enter_time, :leave_time, :page).merge(user_id: current_user.id, share_id: params[:share_id])
+    params.require(:present).permit(:enter_time, :leave_time, :page, :comment, :owner_flag).merge(user_id: current_user.id, share_id: params[:share_id])
   end
 
 end

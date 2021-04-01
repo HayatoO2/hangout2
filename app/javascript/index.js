@@ -9,18 +9,21 @@ $(function(){
 
 
   $('.confirmation-btn').on('click', function() {
-    $('.confirmation-btn').addClass("d-none");
-    $('.confirmation').removeClass("d-none");
-    $('.enter-btn').removeClass("d-none");
+    $('.confirmation').toggleClass("d-none");
     $('.enter').addClass("d-none");
+    $('.owner').addClass("d-none");
+  });
+  $('.owner-btn').on('click', function() {
+    $('.owner').toggleClass("d-none");
+    $('.enter').addClass("d-none");
+    $('.confirmation').addClass("d-none");
   });
 
 
   $('.enter-btn').on('click', function() {
-    $('.enter').removeClass("d-none");
-    $('.enter-btn').addClass("d-none");
-    $('.confirmation-btn').removeClass("d-none");
+    $('.enter').toggleClass("d-none");
     $('.confirmation').addClass("d-none");
+    $('.owner').addClass("d-none");
   });
 
   $('.edit-time').on('click', function() {

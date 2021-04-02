@@ -8,7 +8,6 @@ class Present < ApplicationRecord
   validate :present_owner
 
   def enter_leave
-    binding.pry
     if enter_time.to_i  > leave_time.to_i
       errors.add(:退出時間, "は入室開始時間よりも後")
     end

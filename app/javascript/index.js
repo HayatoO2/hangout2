@@ -2,9 +2,17 @@
 
 $(function(){
 
-  $('.in_out').on('click', function() {
-    $('.card-body').toggleClass("d-none");
-    $('.nav-link').toggleClass("active");
+  $('.in_member').on('click', function() {
+    $('.in_body').removeClass("d-none");
+    $('.out_body').addClass("d-none");
+    $('.nav-in').addClass("active");
+    $('.nav-out').removeClass("active");
+  });
+  $('.out_member').on('click', function() {
+    $('.out_body').removeClass("d-none");
+    $('.in_body').addClass("d-none");
+    $('.nav-out').addClass("active");
+    $('.nav-in').removeClass("active");
   });
 
 

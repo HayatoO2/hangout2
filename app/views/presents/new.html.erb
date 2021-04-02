@@ -91,17 +91,17 @@
 <div class="card-header">
   <ul class="nav nav-pills card-header-pills">
     <li class="nav-item">
-      <a class="nav-link active card-tag in_out" href="#" >入室中</a>
+      <button type="button" class="nav-link nav-in active card-tag in_member"  >入室中</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link card-tag in_out" href="#">退出</a>
+      <button type="button" class="nav-link nav-out card-tag out_member" >退出</a>
     </li>
   </ul>
 </div>
 
 
 <%# 入室 %>
-<div class="card-body ">
+<div class="card-body in_body">
   <p class="card-text">
 
   <% if @presents.present? %>
@@ -272,7 +272,7 @@
 
 
 <%# 退室 %>
-<div class="card-body d-none">
+<div class="card-body d-none out_body">
   <p class="card-text">
 
   <% @out_user.each do |user| %>

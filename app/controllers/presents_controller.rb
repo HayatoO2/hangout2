@@ -11,8 +11,9 @@ class PresentsController < ApplicationController
     else
       @present = Present.new(enter_time: params[:present][:enter_time],  share_id: params[:share_id], user_id: current_user.id)
       @presents = Present.where('enter_time <= ? and leave_time >= ?', @present.enter_time,@present.enter_time)
-      
+      binding.pry
     end
+      @presents.where(owner_flag: true).where('leave_time.to_i <= ?',Time.now.to_i + (9*60*60)).update_all(owner_flag: false)
       @out_user = Present.in_out(@presents,@present)
 
 

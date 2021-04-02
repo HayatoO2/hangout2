@@ -3,7 +3,7 @@ class PresentsController < ApplicationController
 
   def new
     
-    
+    Present.owner_fin
 
     if params[:present] == nil 
       @present = Present.new(enter_time: Date.today,  share_id: params[:share_id])
@@ -13,7 +13,7 @@ class PresentsController < ApplicationController
       @presents = Present.where('enter_time <= ? and leave_time >= ?', @present.enter_time,@present.enter_time)
       binding.pry
     end
-      @presents.where(owner_flag: true).where('leave_time.to_i <= ?',Time.now.to_i + (9*60*60)).update_all(owner_flag: false)
+      
       @out_user = Present.in_out(@presents,@present)
 
 

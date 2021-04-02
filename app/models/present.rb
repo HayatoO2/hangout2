@@ -58,4 +58,14 @@ class Present < ApplicationRecord
     end
   return out_user
   end
+
+  def self.owner_fin
+    Present.where(owner_flag: true).each do |present|
+      if present.leave_time.to_i <= Time.now.to_i + (9*60*60)
+        present.owner_flag = nil
+      end
+    end
+  end
+
+
 end

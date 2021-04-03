@@ -121,7 +121,7 @@
     </p>
     <p><%= "#{present.enter_time.strftime("%m月%d日 %H:%M:%S")}  ~  #{present.leave_time.strftime("%m月%d日 %H:%M:%S")}" %></p>
 
-    <%if present.owner_flag = true %>
+    <%if present.owner_flag == true %>
     <div class="my-3 pb-2 comment">
 コメント：<%= present.comment%>
     </div>

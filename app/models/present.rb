@@ -1,11 +1,12 @@
 class Present < ApplicationRecord
+
   
   validates :enter_time, presence:true
   validates :leave_time, presence:true
 
   validate :enter_leave
   validate :owner_time
-  validate :present_owner
+  validate :present_owner, unless: 
 
   def enter_leave
     if enter_time.to_i  > leave_time.to_i
@@ -59,10 +60,13 @@ class Present < ApplicationRecord
   return out_user
   end
 
+
+  private
   def self.owner_fin
     Present.where(owner_flag: true).each do |present|
       if present.leave_time.to_i <= Time.now.to_i + (9*60*60)
         present.owner_flag = nil
+        present.save validate: false
       end
     end
   end

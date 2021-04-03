@@ -1,19 +1,20 @@
 class PresentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  
 
   def new
-    
     Present.owner_fin
+  
+
 
     if params[:present] == nil 
       @present = Present.new(enter_time: Date.today,  share_id: params[:share_id])
-      @presents = Present.where('enter_time <= ? and leave_time > ?',Date.today,Date.today)
+      @presents = Present.where('enter_time >= ? and leave_time <= ?', Date.today.beginning_of_day  ,Date.today.beginning_of_day + 1.day ).or(Present.where('enter_time <= ? and leave_time <= ? and leave_time >= ?', Date.today.beginning_of_day  ,Date.today.beginning_of_day + 1.day, Date.today.beginning_of_day )).or(Present.where('enter_time >= ? and leave_time >= ? and enter_time <= ?', Date.today.beginning_of_day  ,Date.today.beginning_of_day + 1.day, Date.today.beginning_of_day + 1.day )).or(Present.where('enter_time <= ? and  leave_time >= ?', Date.today.beginning_of_day  ,Date.today.beginning_of_day + 1.day ))
     else
       @present = Present.new(enter_time: params[:present][:enter_time],  share_id: params[:share_id], user_id: current_user.id)
-      @presents = Present.where('enter_time <= ? and leave_time >= ?', @present.enter_time,@present.enter_time)
-      binding.pry
+      @presents = Present.where('enter_time >= ? and leave_time <= ?', @present.enter_time.beginning_of_day  ,@present.enter_time.beginning_of_day + 1.day ).or(Present.where('enter_time <= ? and leave_time <= ? and leave_time >= ?', @present.enter_time.beginning_of_day  ,@present.enter_time.beginning_of_day + 1.day, @present.enter_time.beginning_of_day )).or(Present.where('enter_time >= ? and leave_time >= ? and enter_time <= ?', @present.enter_time.beginning_of_day  ,@present.enter_time.beginning_of_day + 1.day, @present.enter_time.beginning_of_day + 1.day )).or(Present.where('enter_time <= ? and  leave_time >= ?', @present.enter_time.beginning_of_day  ,@present.enter_time.beginning_of_day + 1.day ))
     end
-      
+
       @out_user = Present.in_out(@presents,@present)
 
 

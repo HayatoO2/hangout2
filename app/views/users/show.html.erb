@@ -16,7 +16,9 @@
     <div class="show">
       <h2 class="mb-3">所属スペース</h2>
       <div>
-    <%= @shares %> 
+    <% @shares.each do |share| %> 
+          <%= share.name %>
+          <% end %>
     </div>
     
       </div>

@@ -17,7 +17,7 @@
       <h2 class="mb-3">所属スペース</h2>
       <div>
     <% @shares.each do |share| %> 
-          <p><%= share.name %></p>
+          <p><%= link_to "#{share.name}", new_share_present_path(share.id)  %></p>
           <% end %>
     </div>
     

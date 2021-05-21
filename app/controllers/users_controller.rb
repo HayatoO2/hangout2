@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @shares = current_user
   end
 
   private
